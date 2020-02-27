@@ -12,7 +12,16 @@ Please put the question itself as a comment above each answer.
     Define function: fib(n) 
     Return the nth number in the fibonacci sequence.
 */
-
+function fib(n){
+  if(n > 1)
+    return fib(n-1) + fib(n-2);
+  else if(n==1)
+    return 1;
+  else if(n==0)
+    return 0;
+  else
+    return 0;
+}
 
 
 
@@ -22,7 +31,25 @@ Please put the question itself as a comment above each answer.
     Use the bubble sort algorithm to sort the array.
     Return the sorted array.
 */
+function bubbleSort(numArray){
+  //var sortedArray = numArray;
+  var unsorted = true;
+  var temp = 0;
 
+  do{
+    unsorted = false;
+    for(let i=1; i<numArray.length; i++){
+      if(numArray[i-1] > numArray[i]){
+        temp = numArray[i-1]
+        numArray[i-1] = numArray[i]
+        numArray[i] = temp;
+        unsorted = true;
+      }
+    }
+  }while(unsorted)
+
+  return numArray;
+}
 
 
 
@@ -31,6 +58,25 @@ Please put the question itself as a comment above each answer.
     Define function: reverseStr(someStr)
     Reverse and return the String.
 */
+function reverseStr(someStr){
+  var temp = 'a';
+
+  // Convert string to an array
+  var charArr = new Array(someStr.length);
+  for(let i=0; i<someStr.length; i++)
+    charArr[i] = someStr.charAt(i);
+
+    var tempArr = charArr;
+    
+  // Reverse string
+  for(let i=0; i<Math.floor(charArr.length/2); i++){
+    temp = charArr[charArr.length-i-1];
+    charArr[charArr.length-i-1] = charArr.charAt[i] ;
+    charArr[i] = temp;
+  }
+
+  return charArr.toString();
+}
 
 
 
