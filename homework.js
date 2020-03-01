@@ -33,8 +33,8 @@ function fib(n){
 */
 function bubbleSort(numArray){
   //var sortedArray = numArray;
-  var unsorted = true;
-  var temp = 0;
+  let unsorted = true;
+  let temp = 0;
 
   do{
     unsorted = false;
@@ -59,10 +59,10 @@ function bubbleSort(numArray){
     Reverse and return the String.
 */
 function reverseStr(someStr){
-  var temp = 'a';
+  let temp = 'a';
 
   // Convert string to an array
-  var charArr = new Array(someStr.length);
+  let charArr = new Array(someStr.length);
   for(let i=0; i<someStr.length; i++)
     charArr[i] = someStr.charAt(i);
     
@@ -100,7 +100,7 @@ function factorial(someNum){
     If incorrect input is entered, use the alert function and describe why the input was incorrect.
 */
 function substring(someStr, length, offset){
-  var charArr = new Array(length+1); // +1 to account for inclusive end-point
+  let charArr = new Array(length+1); // +1 to account for inclusive end-point
 
   // Validation code
   if(typeof someStr !== 'string' || !(someStr instanceof 'string')){
@@ -155,7 +155,7 @@ function isEven(someNum){
 */
 function isPalindrom(someStr){
   // Convert string to an array
-  var charArr = new Array(someStr.length);
+  let charArr = new Array(someStr.length);
   for(let i=0; i<someStr.length; i++)
     charArr[i] = someStr.charAt(i);
     
@@ -197,7 +197,7 @@ function isPalindrom(someStr){
       *
 */
 function printShape(shape, height, character){ // UNFINISHED
-  var str = "";
+  let str = "";
   const shapesEnum = {"Square":1, "Triangle":2, "Diamond":3};
   Object.freeze(shapesEnum);
 
@@ -211,7 +211,7 @@ function printShape(shape, height, character){ // UNFINISHED
     default : break;
   }
 
-  function printSquare(){
+  function printSquare() {
     for(let row=0; row<height; row++){
       for(let col=0; col<height; col++){
         str += character;
@@ -221,7 +221,7 @@ function printShape(shape, height, character){ // UNFINISHED
     }
   }
 
-  function printTriangle(){
+  function printTriangle() {
     for(let row=0; row<height; row++){
       for(let col=0; col<=row; col++){
         str += character;
@@ -231,25 +231,25 @@ function printShape(shape, height, character){ // UNFINISHED
     }
   }
 
-  function printDiamond(){
-    var firstStr = "";
-    var secondStr = "";
+  function printDiamond() {
+    let firstStr = "";
+    let secondStr = "";
+    let midpoint = Math.floor(height/2);
     for(let row=0; row<height; row++){
-      for(let col=0; col<Math.floor(height/2); col++){
-      //for(let col=0; col<height; col++){
-        if(col>height/2){ // upper half
-          if(col>=row){
+      for(let col=0; col<height; col++){
+        if(row<midpoint){ // Upper half
+          if(col <= midpoint-row){
+            firstStr = firstStr + " ";
+            secondStr = " " + secondStr;
+          } else {
             firstStr = firstStr + character;
             secondStr = character + secondStr;
-          } else{ // surrounding space
-            firstStr = firstStr + " ";
-            secondStr = " " + secondStr;
           }
-      } else { // lower half
-          if(col>=row){ // lower half
+      } else { // Lower half
+          if(col>=row){
             firstStr = firstStr + " ";
             secondStr = " " + secondStr;
-          } else{ // surrounding space
+          } else {
             firstStr = firstStr + character;
             secondStr = character + secondStr;
           }
@@ -302,7 +302,7 @@ function deleteElement(someArr){
     The lengths should be one less than the original length.
 */
 function spliceElement(someArr){
-  var newArr = new Array(someArr.length-1);
+  let newArr = new Array(someArr.length-1);
   console.log("Length of array is " + someArr.length);
 
   for(let i=0; i<someArr.length-1; i++){
@@ -323,9 +323,9 @@ function spliceElement(someArr){
     The following line should set a Person object to the variable john:
       var john = new Person("John", 30);
 */
-function Person(name,age){ // UNFINISHED
-  var john = new Person(name,age);
-  return john;
+function Person(name,age){ // This is a constructor
+  this.name = name; // name: value pair
+  this.age = age; // constructors do not use the literal object syntax.
 }
 
 
@@ -336,7 +336,11 @@ function Person(name,age){ // UNFINISHED
     The following line should set a Person object to the variable john:
       var john = getPerson("John", 30);
 */
-function getPerson(name, age){ //UNFINISHED
-    var john = getPerson("John", 30);
+function getPerson(name, age){
+  let o = {
+      name:name,
+      age:age
+    };
+  return o;
 }
 

@@ -121,27 +121,81 @@ Find the html element that contains "USA".
 Print that element's contents.
 */
 //<h1>United <span data-customAttr="USA">States</span> of America (<span>USA</span>)</h1>
-console.log(document.getElementsByTagName("h1").length);
+function getUSA(){
+  let elems = document.querySelectorAll('[data-customAttr="USA"]');
+  console.log(elems[0].innerHTML);
+}
+
   
+
 /*
 2. Sales
 Define function getPeopleInSales()
 Print the names of all the people in the sales department.
 */
+// Traverse rows
+/*
+for(let r=0,row; row=tableElem.rows[r]; r++){
+  console.log("Row "+r);
   
+  // Traverse columns
+  for(let c=0,cell; cell=row.cells[c]; c++){
+    console.log("Column "+c+" with cell content "+cell.innerHTML);
+  }
+}
+*/
+function PeopleInSales(){  
+  let tableElem = document.getElementsByTagName("table")[0];
+  // Traverse rows
+  console.log("List of Sales Associates:");
+  for(let r=0,row,cell; row=tableElem.rows[r]; r++){
+    //console.log("Row "+r);
+  
+  // Traverse columns
+    empName = row.cells[0].innerHTML;
+    empDept = row.cells[1].innerHTML;
+    if(empDept === "Sales"){
+      console.log(empName);
+    }
+  }
+}
+
+
 /*
 3. Click Here
 Define function getAnchorChildren()
 Find all anchor elements with a <span> child.
 Print the contents of <span>
 */
-  
+function getAnchorCollection(){
+  let anchroElems = document.getElementsByTagName("a");
+  let span;
+  for(let i=0; i<anchorElems.length; i++){
+    span = anchorElems[i].getElementsByTagName("span")[0];
+    if(span)
+      console.log(span.innerHTML);
+  }
+}
+
 /*
 4. Hobbies
 Define function getHobbies()
 Find the checked option in the 'hobbies' select element.
 Print the value and the contents.
 */
+function getHobbies(){
+  let selectElem = document.getElementsByName("hobbies")[0];
+  let optionElem;
+
+  console.log("Selected Hobbies:");
+  for(let i=0; i<selectElem.childElementCount; i++){
+    optionElem = selectElem[i];
+    if(optionElem.defaultSelected)
+      console.log(optionElem.innerHTML);
+  }
+}
+
+
   
 /*
 5. Custom Attribute
@@ -150,6 +204,16 @@ Find all elements with "data-customAttr" attribute
 Print the value of the attribute.
 Print the element that has the attribute.
 */
+function getCustomAttribute(){
+  let elemsArr = document.querySelectorAll("[data-customAttr]");
+
+  console.log("Elements that have the attribute data-customAttr (Element:Value):");
+  for(let i=0; i<elemsArr.length; i++)
+    console.log(elemsArr[i].tagName + " : " + elemsArr[i].getAttribute("data-customAttr"));
+
+}
+
+
 
 /*
 6. Sum Event
@@ -159,6 +223,9 @@ Regarding these elements:
 	<input id="num2" class="nums" type="text"/>
 	<h3>Sum: <span id="sum"></span></h3>
 */
+let n1 = document.getElementById("num1").value;
+let n2 = document.getElementById("num2").value;
+document.getElementById("sum").innerHTML = + n1 + + n2;
 
 /*
 Define onchange event handler.
