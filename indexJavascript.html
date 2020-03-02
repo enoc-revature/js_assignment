@@ -308,23 +308,27 @@ var colorBlue = colorArr[0];
 var colorRed = colorArr[1];
 var colorGreen = colorArr[2];
 var colorOrange = colorArr[3];
-var oldColor = "a";
-console.log(oldColor);
-var newColor = "a";
+var oldColor = "";
+//console.log(oldColor);
+var newColor = "";
+console.log("newColor"+newColor);
 
-var a=1;
-console.log("a="+a);
+//var a=1;
+//console.log("a="+a);
 
 colorBlue.addEventListener("change", function(){
+  console.log("newColor "+newColor);
   oldColor = newColor;
-  newColor = new String(colorBlue.value);
-  console.log("colorBlue.value="+colorBlue.value);
-  console.log("oldColor="+oldColor.value+", newColor="+newColor.value);
+  newColor = colorBlue.value;
+  console.log("newColor "+newColor);
+  oldColor = newColor;
+  console.log("colorBlue.value="+colorBlue);
+  console.log("oldColor="+oldColor+", newColor="+newColor);
   console.log("Blue got selected\n");
-  a = 2;
-  console.log("a="+a);
+  //a = 2;
+  //console.log("a="+a);
 });
-console.log("a="+a);
+//console.log("a="+a);
 
 colorRed.addEventListener("change", function(){
   oldColor = newColor;
@@ -377,9 +381,10 @@ The time should be accurate to the second without having to reload the page.
 //var d = new Date();
 //timeElem.innerHTML = d.getTime();
 
-function displayTime(){
+/*
+function displaytime(){
   let timeElem = document.getElementById("currentTime");
-  let currentDateTime = new Date();
+  let currentDateTime = new date();
   let hours = currentDateTime.getHours();
   let amPm = hours>12;
   
@@ -389,15 +394,35 @@ function displayTime(){
       	hours + ":" +
       	currentDateTime.getMinutes() + ":" +
       	currentDateTime.getSeconds() + " " +
-      	"PM";
+      	"pm";
   } else {
-    timeElem.innerHTML =
+    timeelem.innerhtml =
       	hours + ":" +
       	currentDateTime.getMinutes() + ":" +
       	currentDateTime.getSeconds() + " " +
-      	"AM";
+      	"am";
   }
 }
+*/
+
+function displayTime(){
+  let timeElem = document.getElementById("currentTime");
+  let currentDateTime = new Date();
+  let hours = currentDateTime.getHours();
+  let amPm = "AM";
+  
+  if(hours>12){
+    hours -= 12;
+    amPm = "PM";
+  }
+  timeElem.innerHTML =
+    	hours + ":" +
+    	currentDateTime.getMinutes() + ":" +
+    	currentDateTime.getSeconds() + " " +
+    	amPm;
+}
+window.setInterval(displayTime,1000);
+
 
 /*
 11. Delay
