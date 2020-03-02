@@ -121,12 +121,12 @@ Find the html element that contains "USA".
 Print that element's contents.
 */
 //<h1>United <span data-customAttr="USA">States</span> of America (<span>USA</span>)</h1>
-function getUSA(){ // UNFINISHED, misunderstood the question
+function getUSA(){
   let elems = document.querySelectorAll('[data-customAttr="USA"]');
   console.log(elems[0].innerHTML);
 }
 
-  
+
 
 /*
 2. Sales
@@ -134,24 +134,13 @@ Define function getPeopleInSales()
 Print the names of all the people in the sales department.
 */
 // Traverse rows
-/*
-for(let r=0,row; row=tableElem.rows[r]; r++){
-  console.log("Row "+r);
-  
-  // Traverse columns
-  for(let c=0,cell; cell=row.cells[c]; c++){
-    console.log("Column "+c+" with cell content "+cell.innerHTML);
-  }
-}
-*/
 function PeopleInSales(){  
   let tableElem = document.getElementsByTagName("table")[0];
   // Traverse rows
   console.log("List of Sales Associates:");
   for(let r=0,row,cell; row=tableElem.rows[r]; r++){
-    //console.log("Row "+r);
   
-  // Traverse columns
+    // Traverse columns
     empName = row.cells[0].innerHTML;
     empDept = row.cells[1].innerHTML;
     if(empDept === "Sales"){
@@ -159,6 +148,7 @@ function PeopleInSales(){
     }
   }
 }
+
 
 
 /*
@@ -176,6 +166,8 @@ function getAnchorCollection(){
       console.log(span.innerHTML);
   }
 }
+
+
 
 /*
 4. Hobbies
@@ -224,13 +216,10 @@ Regarding these elements:
 	<h3>Sum: <span id="sum"></span></h3>
 */
 
-// This has to be commented out because it interfered with other code.
-// However, it works.
-/*
-let n1 = document.getElementById("num1").value;
-let n2 = document.getElementById("num2").value;
-document.getElementById("sum").innerHTML = + n1 + + n2;
-*/
+// This has to be commented out because it interfers with code in problem 7.
+let n1_6 = document.getElementById("num1").value;
+let n2_6 = document.getElementById("num2").value;
+document.getElementById("sum").innerHTML = + n1_6 + + n2_6;
 
 /*
 Define onchange event handler.
@@ -239,10 +228,10 @@ Put the sum in the <span> element.
 If values cannot be added, put "Cannot add" in the <span> element
 */
 
-  var n1=null;
-  var n2=null;
+var n1=null;
+var n2=null;
 window.onload = function(){
- // This code gets bugged when the lines for question 6 are not commented out.
+ // This code gets buggy when the lines for question 6 are not commented out.
   console.log("window.onload executed")
   document.getElementById("num1").addEventListener('change', onChangeOne);
   document.getElementById("num2").addEventListener('change', onChangeTwo);
@@ -294,7 +283,9 @@ selectElem.addEventListener("change", function(){
   alert("Are you sure " + selectElem[selectElem.selectedIndex].innerHTML + " is one of your skills?");
 });
 
-/* UNFINISHED, won't assign new values in function to global variables.
+
+
+/* 
 8. Favorite Color Event
 NOTE: Write unobtrusive Javascript
 NOTE: This is regarding the favoriteColor radio buttons.
@@ -309,47 +300,117 @@ var colorRed = colorArr[1];
 var colorGreen = colorArr[2];
 var colorOrange = colorArr[3];
 var oldColor = "";
-//console.log(oldColor);
 var newColor = "";
-console.log("newColor"+newColor);
-
-//var a=1;
-//console.log("a="+a);
+//<span style="background-color:red;"><input type="radio" name="favoriteColor" value="blue"/></span>Blue<br/>
 
 colorBlue.addEventListener("change", function(){
-  console.log("newColor "+newColor);
   oldColor = newColor;
   newColor = colorBlue.value;
-  console.log("newColor "+newColor);
-  oldColor = newColor;
-  console.log("colorBlue.value="+colorBlue);
-  console.log("oldColor="+oldColor+", newColor="+newColor);
-  console.log("Blue got selected\n");
-  //a = 2;
-  //console.log("a="+a);
+  if(!!oldColor)
+    alert("So you like " + newColor + " more than " + oldColor + " now?");
+  let rangeBlue = document.createRange();
+  let rangeRed = document.createRange();
+  let rangeGreen = document.createRange();
+  let rangeOrange = document.createRange();
+  let spanElemBlue = document.createElement("span");
+  let spanElemRed = document.createElement("span");
+  let spanElemGreen = document.createElement("span");
+  let spanElemOrange = document.createElement("span");
+  spanElemBlue.style.backgroundColor = "blue";
+  spanElemRed.style.backgroundColor = "blue";
+  spanElemGreen.style.backgroundColor = "blue";
+  spanElemOrange.style.backgroundColor = "blue";
+  rangeBlue.selectNode(colorBlue);
+  rangeBlue.surroundContents(spanElemBlue);
+  rangeRed.selectNode(colorRed);
+  rangeRed.surroundContents(spanElemRed);
+  rangeGreen.selectNode(colorGreen);
+  rangeGreen.surroundContents(spanElemGreen);
+  rangeOrange.selectNode(colorOrange);
+  rangeOrange.surroundContents(spanElemOrange);
 });
-//console.log("a="+a);
 
 colorRed.addEventListener("change", function(){
   oldColor = newColor;
   newColor = colorRed.value;
-  console.log("oldColor="+oldColor.value+", newColor="+newColor.value);
-  console.log("Red got selected\n");
+  if(!!oldColor)
+    alert("So you like " + newColor + " more than " + oldColor + " now?");
+  let rangeBlue = document.createRange();
+  let rangeRed = document.createRange();
+  let rangeGreen = document.createRange();
+  let rangeOrange = document.createRange();
+  let spanElemBlue = document.createElement("span");
+  let spanElemRed = document.createElement("span");
+  let spanElemGreen = document.createElement("span");
+  let spanElemOrange = document.createElement("span");
+  spanElemBlue.style.backgroundColor = "red";
+  spanElemRed.style.backgroundColor = "red";
+  spanElemGreen.style.backgroundColor = "red";
+  spanElemOrange.style.backgroundColor = "red";
+  rangeBlue.selectNode(colorBlue);
+  rangeBlue.surroundContents(spanElemBlue);
+  rangeRed.selectNode(colorRed);
+  rangeRed.surroundContents(spanElemRed);
+  rangeGreen.selectNode(colorGreen);
+  rangeGreen.surroundContents(spanElemGreen);
+  rangeOrange.selectNode(colorOrange);
+  rangeOrange.surroundContents(spanElemOrange);
 });
 
 colorGreen.addEventListener("change", function(){
   oldColor = newColor;
   newColor = colorGreen.value;
-  console.log("oldColor="+oldColor.value+", newColor="+newColor.value);
-  console.log("Green got selected\n");
+  if(!!oldColor)
+    alert("So you like " + newColor + " more than " + oldColor + " now?");
+  let rangeBlue = document.createRange();
+  let rangeRed = document.createRange();
+  let rangeGreen = document.createRange();
+  let rangeOrange = document.createRange();
+  let spanElemBlue = document.createElement("span");
+  let spanElemRed = document.createElement("span");
+  let spanElemGreen = document.createElement("span");
+  let spanElemOrange = document.createElement("span");
+  spanElemBlue.style.backgroundColor = "green";
+  spanElemRed.style.backgroundColor = "green";
+  spanElemGreen.style.backgroundColor = "green";
+  spanElemOrange.style.backgroundColor = "green";
+  rangeBlue.selectNode(colorBlue);
+  rangeBlue.surroundContents(spanElemBlue);
+  rangeRed.selectNode(colorRed);
+  rangeRed.surroundContents(spanElemRed);
+  rangeGreen.selectNode(colorGreen);
+  rangeGreen.surroundContents(spanElemGreen);
+  rangeOrange.selectNode(colorOrange);
+  rangeOrange.surroundContents(spanElemOrange);
 });
 
 colorOrange.addEventListener("change", function(){
   oldColor = newColor;
   newColor = colorOrange.value;
-  console.log("oldColor="+oldColor.value+", newColor="+newColor.value);
-  console.log("Orange got selected\n");
+  if(!!oldColor)
+    alert("So you like " + newColor + " more than " + oldColor + " now?");
+  let rangeBlue = document.createRange();
+  let rangeRed = document.createRange();
+  let rangeGreen = document.createRange();
+  let rangeOrange = document.createRange();
+  let spanElemBlue = document.createElement("span");
+  let spanElemRed = document.createElement("span");
+  let spanElemGreen = document.createElement("span");
+  let spanElemOrange = document.createElement("span");
+  spanElemBlue.style.backgroundColor = "orange";
+  spanElemRed.style.backgroundColor = "orange";
+  spanElemGreen.style.backgroundColor = "orange";
+  spanElemOrange.style.backgroundColor = "orange";
+  rangeBlue.selectNode(colorBlue);
+  rangeBlue.surroundContents(spanElemBlue);
+  rangeRed.selectNode(colorRed);
+  rangeRed.surroundContents(spanElemRed);
+  rangeGreen.selectNode(colorGreen);
+  rangeGreen.surroundContents(spanElemGreen);
+  rangeOrange.selectNode(colorOrange);
+  rangeOrange.surroundContents(spanElemOrange);
 });
+
 
 
 /*
@@ -370,6 +431,8 @@ for(let i=0; i<empNames.length; i++){
 	});
 }
 
+
+
 /*
 10. Current Time
 Regarding this element:
@@ -377,34 +440,6 @@ Regarding this element:
 Show the current time in this element in this format: 9:05:23 AM
 The time should be accurate to the second without having to reload the page.
 */
-//var timeElem = document.getElementById("currentTime");
-//var d = new Date();
-//timeElem.innerHTML = d.getTime();
-
-/*
-function displaytime(){
-  let timeElem = document.getElementById("currentTime");
-  let currentDateTime = new date();
-  let hours = currentDateTime.getHours();
-  let amPm = hours>12;
-  
-  if(hours>12){
-    hours -= 12;
-  	timeElem.innerHTML =
-      	hours + ":" +
-      	currentDateTime.getMinutes() + ":" +
-      	currentDateTime.getSeconds() + " " +
-      	"pm";
-  } else {
-    timeelem.innerhtml =
-      	hours + ":" +
-      	currentDateTime.getMinutes() + ":" +
-      	currentDateTime.getSeconds() + " " +
-      	"am";
-  }
-}
-*/
-
 function displayTime(){
   let timeElem = document.getElementById("currentTime");
   let currentDateTime = new Date();
@@ -430,13 +465,36 @@ Regarding this element:
 	<p id="helloWorld">Hello, World!</p>
 Three seconds after a user clicks on this element, change the text to a random color.
 */
+var helloTag = document.getElementById("helloWorld");
+helloTag.addEventListener("click", function(){
+  setTimeout(function(){
+    helloTag.style.background = getRandomColor();
+  },3000);
+});
 
-/*
+function getRandomColor(){
+  var hexLetters = '0123456789ABCDEF';
+  var output = "";
+  for(let i=0; i<4; i++)
+    output += hexLetters[Math.floor(Math.random()*16)];
+  return "#" + output;
+}
+
+/* UNFINISHED, enters an endless recursion that crashes browser.
 12. Walk the DOM
 Define function walkTheDOM(node, func)
 This function should traverse every node in the DOM. Use recursion.
 On each node, call func(node).
 */
+function walkTheDOM(node, func){
+  while(!!node){
+    func(node.childElementCount);
+    walkTheDOM(node.firstElementChild, func);
+  }
+}
+
+var root = document.getRootNode();
+var elem = root.children[0];
 
 
   </script>

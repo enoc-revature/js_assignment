@@ -196,7 +196,7 @@ function isPalindrom(someStr){
      ***
       *
 */
-function printShape(shape, height, character){ // UNFINISHED
+function printShape(shape, height, character){
   let str = "";
   const shapesEnum = {"Square":1, "Triangle":2, "Diamond":3};
   Object.freeze(shapesEnum);
@@ -234,11 +234,11 @@ function printShape(shape, height, character){ // UNFINISHED
   function printDiamond() {
     let firstStr = "";
     let secondStr = "";
-    let midpoint = Math.floor(height/2);
-    for(let row=0; row<height; row++){
+    let midpoint = Math.floor(height/2)+1;
+    for(let row=1; row<height+1; row++){
       for(let col=0; col<height; col++){
         if(row<midpoint){ // Upper half
-          if(col <= midpoint-row){
+          if(col <= midpoint-row+2){
             firstStr = firstStr + " ";
             secondStr = " " + secondStr;
           } else {
@@ -247,11 +247,11 @@ function printShape(shape, height, character){ // UNFINISHED
           }
       } else { // Lower half
           if(col>=row){
-            firstStr = firstStr + " ";
-            secondStr = " " + secondStr;
-          } else {
             firstStr = firstStr + character;
             secondStr = character + secondStr;
+          } else {
+            firstStr = firstStr + " ";
+            secondStr = " " + secondStr;
           }
         }
       }
