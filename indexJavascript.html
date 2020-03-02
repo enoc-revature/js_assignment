@@ -308,19 +308,21 @@ var colorBlue = colorArr[0];
 var colorRed = colorArr[1];
 var colorGreen = colorArr[2];
 var colorOrange = colorArr[3];
-var oldColor = " ";
-var newColor = " ";
+var oldColor = "a";
+console.log(oldColor);
+var newColor = "a";
 
 var a=1;
 console.log("a="+a);
 
 colorBlue.addEventListener("change", function(){
   oldColor = newColor;
-  window.newColor = colorBlue.value;
+  newColor = new String(colorBlue.value);
   console.log("colorBlue.value="+colorBlue.value);
   console.log("oldColor="+oldColor.value+", newColor="+newColor.value);
   console.log("Blue got selected\n");
-  a = a + 1;
+  a = 2;
+  console.log("a="+a);
 });
 console.log("a="+a);
 
@@ -353,6 +355,16 @@ When user hovers over an employees name:
 	Hide the name if shown.
 	Show the name if hidden.
 */
+var empNames = document.getElementsByClassName("empName");
+for(let i=0; i<empNames.length; i++){
+  empNames[i].addEventListener("mouseenter", function(){
+    empNames[i].style.color="white";
+	});
+    
+  empNames[i].addEventListener("mouseleave", function(){
+  	empNames[i].style.color="black";
+	});
+}
 
 /*
 10. Current Time
@@ -361,6 +373,31 @@ Regarding this element:
 Show the current time in this element in this format: 9:05:23 AM
 The time should be accurate to the second without having to reload the page.
 */
+//var timeElem = document.getElementById("currentTime");
+//var d = new Date();
+//timeElem.innerHTML = d.getTime();
+
+function displayTime(){
+  let timeElem = document.getElementById("currentTime");
+  let currentDateTime = new Date();
+  let hours = currentDateTime.getHours();
+  let amPm = hours>12;
+  
+  if(hours>12){
+    hours -= 12;
+  	timeElem.innerHTML =
+      	hours + ":" +
+      	currentDateTime.getMinutes() + ":" +
+      	currentDateTime.getSeconds() + " " +
+      	"PM";
+  } else {
+    timeElem.innerHTML =
+      	hours + ":" +
+      	currentDateTime.getMinutes() + ":" +
+      	currentDateTime.getSeconds() + " " +
+      	"AM";
+  }
+}
 
 /*
 11. Delay
