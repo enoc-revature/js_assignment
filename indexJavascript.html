@@ -232,18 +232,17 @@ var n1=null;
 var n2=null;
 window.onload = function(){
  // This code gets buggy when the lines for question 6 are not commented out.
-  console.log("window.onload executed")
   document.getElementById("num1").addEventListener('change', onChangeOne);
   document.getElementById("num2").addEventListener('change', onChangeTwo);
 }
 
 function numOne(){
-  console.log("numOne() executed");
+  //console.log("numOne() executed");
   n1 = document.getElementById("num1").value;
 }
 
 function numTwo(){
-  console.log("numTwo() executed");
+  //console.log("numTwo() executed");
   n2 = document.getElementById("num2").value;
 }
 
@@ -258,13 +257,13 @@ function updateHeader(){
 }
 
 function onChangeOne() {
-  console.log("onChangeOne() executed");
+  //console.log("onChangeOne() executed");
   numOne();
   updateHeader();
 }
 
 function onChangeTwo() {
-  console.log("onChangeTwo() executed");
+  //console.log("onChangeTwo() executed");
   numTwo();
   updateHeader();
 }
