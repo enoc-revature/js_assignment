@@ -249,6 +249,11 @@ When user selects a skill, create an alert with a message similar to:
 	"Are you sure CSS is one of your skills?"
 NOTE: no alert should appear when user deselects a skill.
 */
+let selectElem = $('[name="skills"]');
+selectElem.change(function(){
+  alert("Are you sure " + $(selectElem).find("option:selected").text() + " is one of your skills?");
+});
+
 
 
 /*
@@ -260,6 +265,8 @@ When a user selects a color, create an alert with a message similar to:
 In this example, green is the new value and blue is the old value.
 Make the background color (of all favoriteColor radio buttons) the newly selected favoriteColor
 */
+
+
 
 /*
 9. Show/Hide Event
