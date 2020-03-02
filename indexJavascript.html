@@ -480,16 +480,22 @@ function getRandomColor(){
   return "#" + output;
 }
 
-/* UNFINISHED, enters an endless recursion that crashes browser.
+/*
 12. Walk the DOM
 Define function walkTheDOM(node, func)
 This function should traverse every node in the DOM. Use recursion.
 On each node, call func(node).
 */
 function walkTheDOM(node, func){
-  while(!!node){
-    func(node.childElementCount);
-    walkTheDOM(node.firstElementChild, func);
+  if((typeof node === "object") &&
+        (typeof node.children !== "undefined") &&
+        (node.children.length > 0)){
+    for(let i=0; i<node.childElementCount; i++){
+      func("Element: "+node.tagName);
+      let child = node.children[i];
+      func(node.childElementCount);
+      walkTheDOM(child, func);
+  }
   }
 }
 
